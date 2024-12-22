@@ -14,6 +14,6 @@ AuthModel _$AuthModelFromJson(Map<String, dynamic> json) => AuthModel(
     );
 
 Map<String, dynamic> _$AuthModelToJson(AuthModel instance) => <String, dynamic>{
-      'user': instance.user!.toJson(),
+      'user': instance.user,
       'password': instance.password,
     };

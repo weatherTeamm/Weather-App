@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather_project/core/helper/cache_helper.dart';
 import 'package:weather_project/core/helper/extension.dart';
 import 'package:weather_project/core/routing/routes.dart';
 import 'package:weather_project/core/theme/app_color.dart';
 import 'package:weather_project/core/theme/app_styles.dart';
-import 'package:weather_project/core/utils/app_constant.dart';
 import 'package:weather_project/core/utils/app_images.dart';
 import 'package:weather_project/core/widgets/custom_animated_text.dart';
 
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(milliseconds: 3000), // Adjust based on animation duration
       () async {
-        if (AppConstants.savedToken.isNotEmpty) {
+        if (CacheHelper.getData(key: 'token') != null) {
           context.pushNamedAndRemoveUntil(Routes.homeScreen,
               predicate: (route) => false);
         } else {

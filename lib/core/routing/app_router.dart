@@ -7,6 +7,7 @@ import 'package:weather_project/features/auth/ui/auth_screen.dart';
 import 'package:weather_project/features/auth/ui/widgets/login/login_screen.dart';
 import 'package:weather_project/features/auth/ui/widgets/register/email_verification_screen.dart';
 import 'package:weather_project/features/auth/ui/widgets/register/register_screen.dart';
+import 'package:weather_project/features/home/logic/cubit/home_cubit.dart';
 import 'package:weather_project/features/home/ui/home_screen.dart';
 import 'package:weather_project/features/onBoarding/ui/onBoarding_screen.dart';
 import 'package:weather_project/features/splash/ui/splash_screen.dart';
@@ -36,7 +37,11 @@ class AppRouter {
                   child: const RegisterScreen(),
                 ));
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<HomeCubit>()..getCurrentLocation(),
+                  child: const HomeScreen(),
+                ));
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
